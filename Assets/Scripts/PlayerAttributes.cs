@@ -23,7 +23,7 @@ public class PlayerAttributes : Inventory
         {
             if (isInventoryAvailable)
             {
-                if (inventory.activeInHierarchy)
+                if (!inventory.activeInHierarchy)
                 {
                     OpenInventory();
                 }

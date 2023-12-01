@@ -63,7 +63,7 @@ public class Store : Inventory
 
     public void CloseInventory()
     {
-        gameObject.transform.parent.gameObject.SetActive(false);
         player.GetComponent<PlayerAttributes>().isInventoryAvailable = true;
+        gameObject.transform.parent.gameObject.SetActive(false);
     }
 }

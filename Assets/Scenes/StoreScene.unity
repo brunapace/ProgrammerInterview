@@ -380,6 +380,7 @@ MonoBehaviour:
   itemsPrice: 320000002c0100009600000046000000
   buttonPrefab: {fileID: 6992162835280782603, guid: 1021730f5fa3c634dac1f8b845cbe861,
     type: 3}
+  player: {fileID: 1784910418}
   shoppingCart: {fileID: 846424923}
   shoppingCartText: {fileID: 668472296}
 --- !u!1 &124157366
@@ -1400,6 +1401,7 @@ MonoBehaviour:
   itemsPrice: 320000002c0100009600000046000000
   buttonPrefab: {fileID: 6992162835280782603, guid: 1021730f5fa3c634dac1f8b845cbe861,
     type: 3}
+  player: {fileID: 0}
   shoppingCart: {fileID: 0}
   shoppingCartText: {fileID: 0}
 --- !u!114 &846424926
@@ -1636,7 +1638,7 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 38d1141be3b748647a454ab1536fe055, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2311d9eca6df714c92710fd1328cc93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4256,6 +4258,7 @@ GameObject:
   - component: {fileID: 1784910422}
   - component: {fileID: 1784910423}
   - component: {fileID: 1784910424}
+  - component: {fileID: 1784910425}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -4325,7 +4328,7 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 38d1141be3b748647a454ab1536fe055, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2311d9eca6df714c92710fd1328cc93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4412,6 +4415,26 @@ MonoBehaviour:
   coinsText: {fileID: 678990436}
   inventory: {fileID: 448860957}
   isInventoryAvailable: 1
+--- !u!95 &1784910425
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784910418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adefd1cab7a067147a4966072abaf3dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2067106562
 PrefabInstance:
   m_ObjectHideFlags: 0

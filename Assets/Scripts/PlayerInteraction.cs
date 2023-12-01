@@ -34,6 +34,7 @@ public class PlayerInteraction : MonoBehaviour
                     gameObject.GetComponent<TooltipSpawner>().UnspawnTooltip();
                 }
                 storeAvailable = false;
+                store.GetComponent<Store>().CloseInventory();
                 break;
             default:
                 break;
