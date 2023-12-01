@@ -54,8 +54,9 @@ public class Store : Inventory
         player.GetComponent<PlayerAttributes>().SetCoins(playerCoins);
         foreach (Transform child in shoppingCart.transform)
         {
-            Destroy(child.gameObject);
+            child.SetParent(player.GetComponent<PlayerAttributes>().inventory.transform);
         }
+        player.GetComponent<PlayerAttributes>().itemsList.AddRange(shoppingCartItems);
         shoppingCartItems.Clear();
         shoppingCartValue = 0;
         shoppingCartText.text = shoppingCartValue.ToString();

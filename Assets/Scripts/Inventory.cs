@@ -6,8 +6,9 @@ using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
-    public string[] itemsName;
-    public int[] itemsPrice;
+    public string[] itemsNames;
+    public int[] itemsPrices;
+    public Sprite[] itemsSprites;
     [HideInInspector] public List<Item> itemsList = new();
     public GameObject buttonPrefab;
 
@@ -15,10 +16,10 @@ public class Inventory : MonoBehaviour
     {
         GameObject currentButton;
 
-        for (int i = 0; i < itemsName.Length; i++)
+        for (int i = 0; i < itemsNames.Length; i++)
         {
             currentButton = Instantiate(buttonPrefab);
-            itemsList.Add(new Item(itemsName[i], currentButton.GetComponent<Button>(), itemsPrice[i], i));
+            itemsList.Add(new Item(itemsNames[i], currentButton.GetComponent<Button>(), itemsPrices[i], i, itemsSprites[i]));
         }
     }
 
@@ -29,8 +30,9 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < itemsList.Count; i++)
         {
             currentButton = itemsList[i].button.gameObject;
+            currentButton.GetComponent<Image>().sprite = itemsList[i].sprite;
             currentButton.transform.SetParent(gridContainer.transform);
-            currentButton.GetComponent<RectTransform>().localScale = new Vector3(0.2f, 0.2f, 1f);
+            currentButton.GetComponent<RectTransform>().localScale = new Vector3(3.7f, 3.7f, 1f);
         }
         gridContainer.GetComponent<GridLayoutGroup>().SetLayoutHorizontal();
     }
