@@ -8,13 +8,23 @@ public class Item
     public string name;
     public int price;
     public Button button;
-    // Start is called before the first frame update
+    private int index;
 
-    public Item(string name, Button button, int price)
+    public Item(string name, Button button, int price, int index)
     {
         this.name = name;
         this.button = button;
         this.price = price;
+        this.index = index;
     }
 
+    public int GetIndex()
+    {
+        return index;
+    }
+
+    public void SetIndex(int value)
+    {
+        index = value;
+    }
 }

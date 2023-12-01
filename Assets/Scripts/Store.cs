@@ -6,26 +6,31 @@ using TMPro;
 
 public class Store : Inventory
 {
-    private GameObject player;
+    public GameObject player;
     private int shoppingCartValue;
     public GameObject shoppingCart;
     public TextMeshProUGUI shoppingCartText;
-    private List<GameObject> shoppingCartItems = new();
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+    private List<Item> shoppingCartItems = new();
 
+    private void Awake()
+    {
+        CreateItems();
+    }
     public void OpenInventory()
     {
         gameObject.transform.parent.gameObject.SetActive(true);
-        SetItems();
+        DisplayItems(gameObject);
+        player.GetComponent<PlayerAttributes>().isInventoryAvailable = false;
+        AssignOnClick();
+    }
+    private void AssignOnClick()
+    {
         int i = 0;
         foreach (Item btn in itemsList)
         {
             int index = i;
-            itemsList[index].button.onClick.AddListener(() => AddToCart(index));
+            itemsList[index].button.onClick.RemoveAllListeners();
+            itemsList[index].button.onClick.AddListener(() => AddToCart(itemsList[index].GetIndex()));
             i++;
         }
     }
@@ -34,25 +39,31 @@ public class Store : Inventory
         shoppingCartValue = int.Parse(shoppingCartText.text);
         shoppingCartValue += itemsList[index].price;
         shoppingCartText.text = shoppingCartValue.ToString();
+
         itemsList[index].button.gameObject.transform.SetParent(shoppingCart.transform);
-        shoppingCartItems.Add(itemsList[index].button.gameObject);
+        MoveItem(itemsList, shoppingCartItems, index);
+        AssignOnClick();
         shoppingCart.GetComponent<GridLayoutGroup>().SetLayoutHorizontal();
     }
+
     public void BuyItems()
     {
         int playerCoins = player.GetComponent<PlayerAttributes>().GetCoins();
-        GameObject temp;
 
         playerCoins -= shoppingCartValue;
         player.GetComponent<PlayerAttributes>().SetCoins(playerCoins);
-        for (int i = 0; i < shoppingCart.transform.childCount; i++)
+        foreach (Transform child in shoppingCart.transform)
         {
-            temp = shoppingCartItems[0];
-            shoppingCartItems.Remove(shoppingCartItems[0]);
-            Destroy(temp);
+            Destroy(child.gameObject);
         }
+        shoppingCartItems.Clear();
         shoppingCartValue = 0;
         shoppingCartText.text = shoppingCartValue.ToString();
     }
 
+    public void CloseInventory()
+    {
+        gameObject.transform.parent.gameObject.SetActive(false);
+        player.GetComponent<PlayerAttributes>().isInventoryAvailable = true;
+    }
 }
